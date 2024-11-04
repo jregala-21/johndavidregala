@@ -1,0 +1,7 @@
+__ci_last_regenerate|i:1730352095;_ci_previous_url|s:44:"http://localhost:8080/index.php/edit-profile";id|s:1:"2";name|s:6:"Amelia";email|s:14:"mely@gmail.com";isLoggedIn|b:1;_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:4:{s:14:"csrf_test_name";s:32:"6a5106ff6cd70628a1805a894c004a89";s:8:"password";s:5:"dsdsd";s:12:"new_password";s:4:"dsds";s:20:"confirm_new_password";s:3:"sds";}}__ci_vars|a:3:{s:13:"_ci_old_input";s:3:"old";s:21:"_ci_validation_errors";s:3:"old";s:6:"errors";s:3:"old";}_ci_validation_errors|a:2:{s:12:"new_password";s:63:"The new_password field must be at least 8 characters in length.";s:20:"confirm_new_password";s:69:"The confirm_new_password field does not match the new_password field.";}errors|s:222:"	<div class="errors" role="alert">
+		<ul>
+					<li>The new_password field must be at least 8 characters in length.</li>
+					<li>The confirm_new_password field does not match the new_password field.</li>
+				</ul>
+	</div>
+";
