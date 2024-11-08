@@ -1,53 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="wrapper">
-    <h2>Login</h2>
+    <div class="wrapper">
+        <h2>Forgot Password</h2>
 
-    <?php if(session()->getFlashdata('msg')):?>
-      <div class="alert alert-warning">
-        <?= session()->getFlashdata('msg') ?>
-      </div>
-    <?php endif;?>
+        <?php if (session()->getFlashdata('msg')): ?>
+            <div class="alert alert-warning">
+                <?= session()->getFlashdata('msg') ?>
+            </div>
+        <?php endif; ?>
 
-    <form action="<?php base_url('/login'); ?>" method="post">
+        <form method="POST" action="/password_reset_request">
+            <div class="input-box">
+                <input type="email" name="email" id="email" placeholder="Enter your email" required>
+            </div>
 
-      <div class="input-box">
-        <input type="text" name="email" id="email" value="<?= esc($email ?? '') ?>" placeholder="Enter your email" required>
-      </div>
+            <div class="input-box button">
+            <button type="submit">Send Reset Link</button>
+            </div>
+      
 
-      <div class="input-box">
-        <input type="password" name="password" id="password" value="<?= esc($password ?? '') ?>" placeholder="Enter your password" required>
-      </div>
-
-      <!-- Remember Me Checkbox -->
-      <div class="form-check" style="margin-bottom: 20px;">
-          <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me"
-          <?= (isset($email) || isset($password)) ? 'checked' : '' ?>>
-          <label class="form-check-label" for="remember_me">Remember me</label>
-          
-      </div>
-
-      <div class="input-box button">
-        <button type="submit">Login Now</button>
-      </div>
-
-      <div class="input-box password">
-        <button type="button" onclick="window.location.href='<?= base_url('/password_reset_request') ?>'">Forgot Password</button>
-      </div>
-
-      <div class="text">
-        <h3>Not registered? <a href="<?= base_url('/register') ?>">Register Now</a></h3>
-      </div>
-
-    </form>
-  </div>
+        <div class="text">
+            <h3>Remember your password? <a href="<?= base_url('/login') ?>">Login here</a></h3>
+        </div>
+        </form>
+    </div>
 </body>
 </html>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');

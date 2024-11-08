@@ -12,7 +12,10 @@ class UserModel extends Model
         'name',
         'email',
         'password',
-        'pcreated_at'
+        'created_at',
+        'updated_at',
+        'reset_token',
+        'reset_token_expires'
     ];
 
 }

@@ -16,18 +16,25 @@ class SignupCon extends Controller
     {
         helper(['form']);
         $rules = [
-            'name'           => 'required|min_length[2]|max_length[50]|alpha_space',
+            'firstname'      => 'required|min_length[2]|max_length[50]|alpha_space',
+            'lastname'       => 'required|min_length[2]|max_length[50]|alpha_space',
             'email'          => 'required|min_length[4]|max_length[100]|valid_email|is_unique[users.email]',
             'password'       => 'required|min_length[8]|max_length[50]',
             'confirmpassword' => 'required|matches[password]',
         ];
     
         $messages = [
-            'name' => [
-                'required' => 'Name is required',
-                'min_length' => 'Name must be at least 2 characters long',
-                'max_length' => 'Name cannot exceed 50 characters',
-                'alpha_space' => 'Name can only contain letters',
+            'firstname' => [
+                'required' => 'First name is required',
+                'min_length' => 'First name must be at least 2 characters long',
+                'max_length' => 'First name cannot exceed 50 characters',
+                'alpha_space' => 'First name can only contain letters',
+            ],
+            'lastname' => [
+                'required' => 'Last name is required',
+                'min_length' => 'Last name must be at least 2 characters long',
+                'max_length' => 'Last name cannot exceed 50 characters',
+                'alpha_space' => 'Last name can only contain letters',
             ],
             'email' => [
                 'required' => 'Email is required',
@@ -47,10 +54,15 @@ class SignupCon extends Controller
             ],
         ];
     
+        $firstName = $this->request->getVar('firstname');
+        $lastName = $this->request->getVar('lastname');
+        $fullName = $firstName . " " . $lastName;
+
+
         if ($this->validate($rules, $messages)) {
             $userModel = new UserModel();
             $data = [
-                'name'     => $this->request->getVar('name'),
+                'name'     => $fullName,
                 'email'    => $this->request->getVar('email'),
                 'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];

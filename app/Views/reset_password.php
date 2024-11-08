@@ -1,53 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <div class="wrapper">
-    <h2>Login</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="wrapper">
+                    <h2>Reset Password</h2>
+                    <?php if (session()->getFlashdata('msg')): ?>
+                        <p><?= session()->getFlashdata('msg') ?></p>
+                    <?php endif; ?>
 
-    <?php if(session()->getFlashdata('msg')):?>
-      <div class="alert alert-warning">
-        <?= session()->getFlashdata('msg') ?>
-      </div>
-    <?php endif;?>
+                    <form method="POST" action="/reset_password" class="mt-4">
+                        <input type="hidden" name="token" value="<?= $token ?>">
+                        <div class="form-group">
+                            <label for="password">New Password:</label>
+                            <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
 
-    <form action="<?php base_url('/login'); ?>" method="post">
+                        <div class="form-group">
+                            <label for="password_confirm">Confirm New Password:</label>
+                            <input type="password" id="password_confirm" name="password_confirm" class="form-control" required>
+                        </div>
 
-      <div class="input-box">
-        <input type="text" name="email" id="email" value="<?= esc($email ?? '') ?>" placeholder="Enter your email" required>
-      </div>
-
-      <div class="input-box">
-        <input type="password" name="password" id="password" value="<?= esc($password ?? '') ?>" placeholder="Enter your password" required>
-      </div>
-
-      <!-- Remember Me Checkbox -->
-      <div class="form-check" style="margin-bottom: 20px;">
-          <input type="checkbox" class="form-check-input" id="remember_me" name="remember_me"
-          <?= (isset($email) || isset($password)) ? 'checked' : '' ?>>
-          <label class="form-check-label" for="remember_me">Remember me</label>
-          
-      </div>
-
-      <div class="input-box button">
-        <button type="submit">Login Now</button>
-      </div>
-
-      <div class="input-box password">
-        <button type="button" onclick="window.location.href='<?= base_url('/password_reset_request') ?>'">Forgot Password</button>
-      </div>
-
-      <div class="text">
-        <h3>Not registered? <a href="<?= base_url('/register') ?>">Register Now</a></h3>
-      </div>
-
-    </form>
-  </div>
+                        <button type="submit" class="btn btn-primary">Reset Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
